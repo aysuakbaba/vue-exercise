@@ -14,22 +14,30 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Dynamic Styling</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button @click="add(5)">Add 5</button>
-      <button @click="reduce(1)">Reduce 1</button>
-      <div>
-
-        <p>Result: {{ countMessage }}</p>
+    <section id="styling">
+      <div
+        :class="[{ active: this.boxASelected }, 'demo']"
+        :style="{borderColor: boxASelected ? 'red' : 'black'}"
+        @click="boxSelected('A')"
+      >
+        A
       </div>
-
-      <input type="text" v-model="name">
-      <input type="text" v-model="lastName">
-      <button @click="resetInput()">Reset Input</button>
-      <p>Your Name:  {{fullName}} </p>
-      
+      <div
+        :class="[{ active: this.boxBSelected }, 'demo']"
+        :style="{borderColor: boxBSelected ? 'red' : 'black'}"
+        @click="boxSelected('B')"
+      >
+        B
+      </div>
+      <div
+        :class="[{ active: this.boxCSelected }, 'demo']"
+        :style="{borderColor: boxCSelected ? 'red' : 'black'}"
+        @click="boxSelected('C')"
+      >
+        C
+      </div>
     </section>
   </body>
 </html>
