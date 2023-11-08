@@ -14,30 +14,25 @@
   </head>
   <body>
     <header>
-      <h1>Vue Dynamic Styling</h1>
+      <h1>Vue Course Goals</h1>
     </header>
-    <section id="styling">
-      <div
-        :class="[{ active: this.boxASelected }, 'demo']"
-        :style="{borderColor: boxASelected ? 'red' : 'black'}"
-        @click="boxSelected('A')"
-      >
-        A
-      </div>
-      <div
-        :class="[{ active: this.boxBSelected }, 'demo']"
-        :style="{borderColor: boxBSelected ? 'red' : 'black'}"
-        @click="boxSelected('B')"
-      >
-        B
-      </div>
-      <div
-        :class="[{ active: this.boxCSelected }, 'demo']"
-        :style="{borderColor: boxCSelected ? 'red' : 'black'}"
-        @click="boxSelected('C')"
-      >
-        C
-      </div>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal">Add Goal</button>
+      <p v-if="goals.length === 0">
+        No goals have been added yet - please start adding some!
+      </p>
+      <ul v-if="goals.length > 0">
+        <li
+          v-for="(goal, index) in goals"
+          :key="goal"
+          @click="removeGoal(index)"
+        >
+          <p>{{goal}} - {{index}}</p>
+          <input type="text" @click.stop />
+        </li>
+      </ul>
     </section>
   </body>
 </html>
